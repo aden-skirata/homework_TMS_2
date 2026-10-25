@@ -247,3 +247,32 @@ file1.txt (END)
 ├── [drwxr-xr-x]  .config
 │   ├── [drwxr-xr-x]  autostart
 ```
+
+###10. mkdir
+
+```
+┌──(aden-skirata㉿kali)-[~]
+└─$ mkdir -m 777 new_dir_exemp
+┌──(aden-skirata㉿kali)-[~]
+└─$ ls -ld new_dir_exemp
+drwxrwxrwx 2 aden-skirata aden-skirata 4096 Oct 25 07:56 new_dir_exemp
+```
+
+###11. rm
+
+```
+┌──(aden-skirata㉿kali)-[~]
+└─$ rm -v file1.txt 
+removed 'file1.txt'
+```
+
+###12. rmdir
+
+```
+┌──(aden-skirata㉿kali)-[~]
+└─$ rmdir -p new_dir_exemp 
+                                                                                                                                                                                                                                           
+┌──(aden-skirata㉿kali)-[~]
+└─$ pwd
+/home/aden-skirata
+```

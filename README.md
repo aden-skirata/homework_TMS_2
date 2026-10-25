@@ -276,3 +276,22 @@ removed 'file1.txt'
 └─$ pwd
 /home/aden-skirata
 ```
+
+
+## 3. delete / and restore system from snapshot
+
+```
+┌──(aden-skirata㉿kali)-[~]
+└─$ sudo rm -rf /*
+                                                                                                                                                                                       >
+error: file '/boot/grub/i386-pc/normal.mod' not found.
+```
+
+### До удаления
+![Снимок до удаления](snapshot_berore_deletion.png)
+
+### После удаления
+![Система после удаления](deleted_system.png)
+
+### После восстановления
+![Система после восстановления](restored_system.png)

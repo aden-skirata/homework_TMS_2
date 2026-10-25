@@ -295,3 +295,20 @@ error: file '/boot/grub/i386-pc/normal.mod' not found.
 
 ### После восстановления
 ![Система после восстановления](restored_system.png)
+
+## 4. sudo without password
+
+```
+┌──(aden-skirata㉿kali)-[~]
+└─$ echo "aden-skirata ALL=(ALL:ALL) NOPASSWD:ALL" | sudo tee /etc/sudoers.d/aden-skirata
+[sudo] password for aden-skirata: 
+aden-skirata ALL=(ALL:ALL) NOPASSWD:ALL
+
+┌──(aden-skirata㉿kali)-[~]
+└─$ sudo whoami   
+root
+                                                                                                                                                                                                                                          
+┌──(aden-skirata㉿kali)-[~]
+└─$ sudo cat /etc/sudoers.d/aden-skirata
+aden-skirata ALL=(ALL:ALL) NOPASSWD:ALL
+```

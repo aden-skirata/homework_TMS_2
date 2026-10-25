@@ -1,4 +1,4 @@
-##1. deleted git
+## 1. deleted git
 
 ```
 ┌──(aden-skirata㉿kali)-[~]
@@ -76,9 +76,9 @@ Processing triggers for kali-menu (2026.3.4)…
 git version 2.53.0
 ```
 
-##2. Commands
+## 2. Commands
 
-###touch
+### 1.touch
 
 ```
 ┌──(aden-skirata㉿kali)-[~]
@@ -116,7 +116,7 @@ Change: 2026-10-25 07:00:14.909103530 -0400
 
 ```
 
-###3. nano
+### 2. nano
 
 ```
 ┌──(aden-skirata㉿kali)-[~]
@@ -129,7 +129,7 @@ Change: 2026-10-25 07:00:14.909103530 -0400
  4
 ```
 
-###4. cat
+### 3. cat
 
 ```
 ┌──(aden-skirata㉿kali)-[~]
@@ -156,7 +156,7 @@ lorem ipsum 6
      7  lorem ipsum 6 
 ```
 
-###5. pwd
+### 4. pwd
 
 ```
 ┌──(aden-skirata㉿kali)-[~]
@@ -165,7 +165,7 @@ lorem ipsum 6
                    
 ```
 
-###6. ls
+### 5. ls
 
 ```
 ┌──(aden-skirata㉿kali)-[~]
@@ -185,7 +185,7 @@ total 48
 4 drwxr-xr-x 2 aden-skirata aden-skirata 4096 Oct 12 12:44 Videos/
 ```
 
-###7. head
+### 6. head
 
 ```
 ┌──(aden-skirata㉿kali)-[~]
@@ -194,7 +194,7 @@ total 48
 2026-10-12 16:27:46 install base-passwd:amd64 <none> 3.
 ```
 
-###7. tail
+### 7. tail
 
 ```
 ┌──(aden-skirata㉿kali)-[~]
@@ -211,7 +211,7 @@ Oct 25 07:38:34 kali kernel: 11:38:34.702638 dndHGCM   DnD: Received message HOS
 Oct 25 07:38:34 kali kernel: 11:38:34.703471 dnd       No guest source window
 ```
 
-###8. less
+### 8. less
 
 ```
 ┌──(aden-skirata㉿kali)-[~]
@@ -224,7 +224,7 @@ Oct 25 07:38:34 kali kernel: 11:38:34.703471 dnd       No guest source window
 file1.txt (END)
 ```
 
-###9. tree
+### 9. tree
 
 ```
 ┌──(aden-skirata㉿kali)-[~]
@@ -248,7 +248,7 @@ file1.txt (END)
 │   ├── [drwxr-xr-x]  autostart
 ```
 
-###10. mkdir
+### 10. mkdir
 
 ```
 ┌──(aden-skirata㉿kali)-[~]
@@ -258,7 +258,7 @@ file1.txt (END)
 drwxrwxrwx 2 aden-skirata aden-skirata 4096 Oct 25 07:56 new_dir_exemp
 ```
 
-###11. rm
+### 11. rm
 
 ```
 ┌──(aden-skirata㉿kali)-[~]
@@ -266,7 +266,7 @@ drwxrwxrwx 2 aden-skirata aden-skirata 4096 Oct 25 07:56 new_dir_exemp
 removed 'file1.txt'
 ```
 
-###12. rmdir
+### 12. rmdir
 
 ```
 ┌──(aden-skirata㉿kali)-[~]

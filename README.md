@@ -312,3 +312,88 @@ root
 └─$ sudo cat /etc/sudoers.d/aden-skirata
 aden-skirata ALL=(ALL:ALL) NOPASSWD:ALL
 ```
+
+## 5. daemon (root usage, free space, inode usage, systemd failed units count)
+
+```
+┌──(aden-skirata㉿kali)-[~]
+└─$ sudo nano /usr/local/bin/system-monitor.sh
+                                                                                                                                                                                                                                         
+┌──(aden-skirata㉿kali)-[~]
+└─$ sudo nano /usr/local/bin/storage-monitor.sh
+                                                                                                                                                                                                                                         
+┌──(aden-skirata㉿kali)-[~]
+└─$ sudo chmod +x /usr/local/bin/storage-monitor.sh
+                                                                                                                                                                                                                                         
+┌──(aden-skirata㉿kali)-[~]
+└─$ ls -ld /usr/local/bin/storage-monitor.sh
+
+-rwxr-xr-x 1 root root 496 Oct 25 09:32 /usr/local/bin/storage-monitor.sh
+                                                                                                                                                                                                                                         
+┌──(aden-skirata㉿kali)-[~]
+└─$ sudo nano /etc/systemd/system/storage-monitor.service
+                                                                                                                                                                                                                                         
+┌──(aden-skirata㉿kali)-[~]
+└─$ sudo nano /etc/systemd/system/storage-monitor.timer
+                                                                                                                                                                                                                                         
+┌──(aden-skirata㉿kali)-[~]
+└─$ sudo systemctl daemon-reload
+                                                                                                                                                                                                                                         
+┌──(aden-skirata㉿kali)-[~]
+└─$ sudo systemctl enable --now storage-monitor.timer
+Created symlink '/etc/systemd/system/timers.target.wants/storage-monitor.timer' → '/etc/systemd/system/storage-monitor.timer'.
+                                                                                                                                                                                                                                         
+┌──(aden-skirata㉿kali)-[~]
+└─$ systemctl list-timers storage-monitor.timer
+NEXT                        LEFT LAST PASSED UNIT                  ACTIVATES              
+Sun 2026-10-25 09:45:00 EDT 7min -         - storage-monitor.timer storage-monitor.service
+
+1 timers listed.
+Pass --all to see loaded but inactive timers, too.
+                                                                                                                                                                                                                                         
+┌──(aden-skirata㉿kali)-[~]
+└─$ sudo systemctl start storage-monitor.service
+                                                                                                                                                                                                                                         
+┌──(aden-skirata㉿kali)-[~]
+└─$ cat /var/log/storage-monitor.log
+timestamp=2026-10-25 09:38:07 root_usage_percent=23 root_avail=31G inode_usage_percent=10 failed_units=0
+
+```
+
+### storage-monitor.sh
+
+```
+#!/bin/bash
+LOG_FILE="/var/log/storage-monitor.log"
+TIMESTAMP=$(date +"%Y-%m-%d %H:%M:%S")
+ROOT_USAGE=$(df -P / | awk 'NR==2 {gsub("%","",$5); print $5}')
+ROOT_AVAIL=$(df -P -h / | awk 'NR==2 {print $4}')
+INODE_USAGE=$(df -P -i / | awk 'NR==2 {gsub("%","",$5); print $5}')
+FAILED_UNITS=$(systemctl --failed --no-legend --no-pager | wc -l)
+echo "timestamp=$TIMESTAMP root_usage_percent=$ROOT_USAGE root_avail=$ROOT_AVAIL inode_usage_percent=$INODE_USAGE failed_units=$FAILED_UNITS" >> "$LOG_FILE"
+```
+
+### storage-monitor.service
+
+```
+[Unit]
+Description=Storage Monitor
+
+[Service]
+Type=oneshot
+ExecStart=/usr/local/bin/storage-monitor.sh
+```
+
+### storage-monitor.timer
+
+```
+[Unit]
+Description=Run Storage Monitor every 15 minutes
+
+[Timer]
+OnCalendar=*:0/15
+Persistent=true
+
+[Install]
+WantedBy=timers.target
+```
